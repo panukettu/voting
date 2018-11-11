@@ -1,24 +1,22 @@
 {
-  "name": "voting-server",
+  "name": "voting",
   "version": "1.0.0",
-  "description": "",
+  "description": "a voting app",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
-    "test": "jest --watchAll"
+    "start-server": "cd server && npm start",
+    "start-client": "cd client && npm start",
+    "test-server": "cd server && npm test",
+    "test-client": "cd client && npm test"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panukettu/voting.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.5",
-    "@babel/preset-env": "^7.1.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "jest": "^23.6.0",
-    "redux": "^4.0.1",
-    "socket.io": "^2.1.1"
-  }
+  "bugs": {
+    "url": "https://github.com/panukettu/voting/issues"
+  },
+  "homepage": "https://github.com/panukettu/voting#readme"
 }
