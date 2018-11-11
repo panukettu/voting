@@ -2,10 +2,10 @@
 
 ## run it
 
-> yarn start-server
+> yarn start-server  
 > yarn start-client
 
 ## test it
 
-> yarn test-server
+> yarn test-server  
 > yarn test-client
