@@ -4,12 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node index.js",
     "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jest": "^23.6.0"
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
+    "redux": "^4.0.1",
+    "socket.io": "^2.1.1"
   }
 }

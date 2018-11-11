@@ -1,0 +1,19 @@
+.voting-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 50vh;
+  background-color: purple;
+  border: none;
+  color: white;
+}
+
+.voting-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 40px;
+  font-family: consolas;
+}

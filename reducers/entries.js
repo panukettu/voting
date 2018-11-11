@@ -1,18 +1,58 @@
-const entries = (state = [], action) => {
+const entries = (state = {}, action) => {
   switch (action.type) {
-    case "ADD_ENTRIES": {
-      return [...state, ...action.payload];
+    case "SET_ENTRIES": {
+      return {
+        entries: state.entries
+          ? [...state.entries, ...action.entries]
+          : [...action.entries]
+      };
     }
-    case "NEXT_VOTE": {
-      return action.payload.winner
-        ? [...state.slice(2), ...action.payload.winner]
-        : [...state.slice(2)];
+    case "NEXT": {
+      const entries = state.entries.concat(getWinner(state.vote));
+      if (entries.length === 1) {
+        return {
+          winner: entries[0]
+        };
+      }
+      return {
+        entries: entries.slice(2),
+        vote: {
+          pair: entries.slice(0, 2)
+        }
+      };
+    }
+    case "VOTE": {
+      return { ...state, vote: vote(state.vote, action) };
     }
     default:
       return state;
   }
 };
 
-module.exports = {
-  entries
+const vote = (state = {}, action) => {
+  switch (action.type) {
+    case "VOTE": {
+      return {
+        ...state,
+        tally: {
+          ...state.tally,
+          [action.entry]: (state.tally && state.tally[action.entry] + 1) || 1
+        }
+      };
+    }
+    default:
+      return state;
+  }
 };
+
+function getWinner(obj) {
+  if (!obj) return [];
+  const [a, b] = obj.pair;
+  const aVotes = obj.tally[a] || 0;
+  const bVotes = obj.tally[b] || 0;
+  if (aVotes > bVotes) return [a];
+  else if (bVotes > aVotes) return [b];
+  else return [a, b];
+}
+
+export default entries;
