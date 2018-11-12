@@ -12,12 +12,17 @@ const mapStateToProps = ({ vote: { pair, tally }, winner, votedFor }) => ({
 });
 
 export function Voting(props) {
-  const { winner } = props;
-  if (winner) {
-    return <div>Winner is {winner}</div>;
-  } else {
-    return <Vote {...props} />;
-  }
+  const { winners } = props;
+
+  return (
+    <div className="voting">
+      {winners ? (
+        <div className="winner">Winner is: {winners}</div>
+      ) : (
+        <Vote {...props} />
+      )}
+    </div>
+  );
 }
 
 const Vote = ({ pair, tally = {}, votedFor, vote }) => {
@@ -30,7 +35,7 @@ const Vote = ({ pair, tally = {}, votedFor, vote }) => {
         <div key={v4()} className="voting-item">
           {hasVotedFor(entry) && (
             <label htmlFor="results" style={{ color: "white" }}>
-              You and {tally[entry] - 1} others voted
+              You and {tally[entry] - 1} others voted for
             </label>
           )}
           <button

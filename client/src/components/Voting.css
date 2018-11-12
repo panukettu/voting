@@ -1,19 +1,39 @@
-.voting-item {
+.voting {
   display: flex;
+  background-color: purple;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 50vh;
-  background-color: purple;
-  border: none;
   color: white;
+  width: 100vw;
+  height: 100vh;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.voting-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  border: none;
 }
 
 .voting-button {
   background: transparent;
   border: none;
   color: white;
+  font-size: 40px;
+  font-family: consolas;
+  font-style: italic;
+  text-shadow: 2px 3px #3f6ba9;
+  -webkit-text-stroke-width: 0px;
+  -webkit-text-stroke-color: black;
+  -webkit-text-fill-color: white;
+}
+
+.winner {
   font-size: 40px;
   font-family: consolas;
   font-style: italic;

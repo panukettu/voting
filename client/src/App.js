@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <VotingContainer path="/" store={this.props.store} />
+        <VotingContainer path="/" />
         <ResultsContainer path="results" />
       </Router>
     );
