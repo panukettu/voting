@@ -4,6 +4,7 @@
   "description": "a voting app",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently --kill-others --raw \"npm run start-server\" \"npm run start-client\"",
     "start-server": "cd server && npm start",
     "start-client": "cd client && npm start",
     "test-server": "cd server && npm test",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/panukettu/voting/issues"
   },
-  "homepage": "https://github.com/panukettu/voting#readme"
+  "homepage": "https://github.com/panukettu/voting#readme",
+  "dependencies": {
+    "concurrently": "^4.0.1"
+  }
 }

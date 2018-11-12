@@ -26,7 +26,6 @@ const Vote = ({ pair, tally = {}, votedFor, vote }) => {
 
   return (
     <div>
-      asdasd
       {pair.map((entry, index) => (
         <div key={v4()} className="voting-item">
           {hasVotedFor(entry) && (
