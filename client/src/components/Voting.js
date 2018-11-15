@@ -11,13 +11,11 @@ const mapStateToProps = ({ vote: { pair, tally }, winner, votedFor }) => ({
   votedFor
 });
 
-export function Voting(props) {
-  const { winners } = props;
-
+export function Voting({ winner, ...props }) {
   return (
     <div className="voting">
-      {winners ? (
-        <div className="winner">Winner is: {winners}</div>
+      {winner ? (
+        <div className="winner">Winner is: {winner}</div>
       ) : (
         <Vote {...props} />
       )}

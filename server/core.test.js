@@ -23,6 +23,25 @@ describe("application logic", () => {
     expect(entries(stateBefore, action)).toEqual(stateAfter);
   });
 
+  it("can call next without votes", () => {
+    const stateBefore = {
+      entries: ["B", "C"],
+      vote: {
+        pair: ["A", "B"]
+      }
+    };
+    const action = {
+      type: "NEXT"
+    };
+    const stateAfter = {
+      entries: ["A", "B"],
+      vote: {
+        pair: ["B", "C"]
+      }
+    };
+    expect(entries(stateBefore, action)).toEqual(stateAfter);
+  });
+
   it("returns the winner back and removes the loser", () => {
     const stateBefore = {
       entries: ["Trainspotting", "Wolf of Wall Street"],
@@ -94,6 +113,28 @@ describe("application logic", () => {
       { type: "NEXT" }
     ];
     const stateAfter = { winner: "Harry Potter" };
+
+    const state = actions.reduce(entries, {});
+    expect(state).toEqual(stateAfter);
+  });
+
+  it("starts a new round", () => {
+    const actions = [
+      { type: "SET_ENTRIES", entries: ["Shrek 2", "Harry Potter"] },
+      { type: "NEXT" },
+      { type: "VOTE", entry: "Harry Potter" },
+      { type: "VOTE", entry: "Harry Potter" },
+      { type: "VOTE", entry: "Harry Potter" },
+      { type: "NEXT" },
+      { type: "SET_ENTRIES", entries: ["Shrek", "Pocahontas"] },
+      { type: "NEXT" }
+    ];
+    const stateAfter = {
+      entries: [],
+      vote: {
+        pair: ["Shrek", "Pocahontas"]
+      }
+    };
 
     const state = actions.reduce(entries, {});
     expect(state).toEqual(stateAfter);

@@ -8,8 +8,13 @@ const entries = (state = {}, action) => {
       };
     }
     case "NEXT": {
-      const entries = state.entries.concat(getWinner(state.vote));
-      if (entries.length === 1) {
+      let entries;
+      if (state.entries) {
+        entries = state.entries.concat(getWinner(state.vote));
+      } else {
+        return state;
+      }
+      if (entries.length === 1 && !state.winner) {
         return {
           winner: entries[0]
         };
@@ -48,6 +53,7 @@ const vote = (state = {}, action) => {
 function getWinner(obj) {
   if (!obj) return [];
   const [a, b] = obj.pair;
+  if (!obj.tally) return [a, b];
   const aVotes = obj.tally[a] || 0;
   const bVotes = obj.tally[b] || 0;
   if (aVotes > bVotes) return [a];

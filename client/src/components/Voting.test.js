@@ -36,7 +36,7 @@ describe("Voting", () => {
     const { queryByText, debug } = render(
       <Voting pair={pair} vote={vote} votedFor="Shrek" tally={tally} />
     );
-    expect(queryByText("You and 0 others voted")).toBeInTheDocument();
+    expect(queryByText(/you and 0 others voted for/i)).toBeInTheDocument();
   });
 
   it("renders just the winner", () => {
@@ -47,7 +47,7 @@ describe("Voting", () => {
       <Voting pair={pair} vote={vote} votedFor="Shrek" winner="Shrek" />
     );
 
-    expect(queryByText("Harry Potter")).not.toBeInTheDocument();
-    expect(getByText("Winner is Shrek")).toBeInTheDocument();
+    expect(queryByText("Harry Potter")).not.toBeInTheDOM();
+    expect(getByText("Winner is: Shrek")).toBeInTheDOM();
   });
 });

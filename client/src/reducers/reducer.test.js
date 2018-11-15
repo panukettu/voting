@@ -73,4 +73,42 @@ describe("client reducer", () => {
 
     expect(reducer(stateBefore, action)).toEqual(action.state);
   });
+
+  it("clears votedFor when next", () => {
+    const stateBefore = {
+      votedFor: "A",
+      entries: ["C", "D"],
+      vote: {
+        pair: ["A", "B"],
+        tally: { A: 1 }
+      }
+    };
+
+    const action = {
+      type: "NEXT"
+    };
+
+    const stateAfter = { ...stateBefore };
+    delete stateAfter.votedFor;
+    expect(reducer(stateBefore, action)).toEqual(stateAfter);
+  });
+
+  // it("clears votedFor after two entries", () => {
+  //   const actions = [
+  //     { type: "VOTE", entry: "A" },
+  //     { type: "NEXT" },
+  //     { type: "VOTE", entry: "C" },
+  //     { type: "NEXT" }
+  //   ];
+
+  //   const stateAfter = {
+  //     entries: ["C", "D"],
+  //     vote: {
+  //       pair: ["A", "B"],
+  //       tally: { A: 2 }
+  //     }
+  //   };
+
+  //   expect(actions.reduce(reducer, {})).toEqual(stateAfter);
+  // });
 });

@@ -30,4 +30,31 @@ describe("results", () => {
 
     expect(queryByText("Winner is Inception")).toBeInTheDocument();
   });
+
+  it("displays input for setting entries", () => {
+    const { queryByText } = render(<Results />);
+    expect(queryByText(/entries/i)).toBeInTheDocument();
+  });
+
+  it("displays a button for calling the set entries function", () => {
+    const { queryByText } = render(<Results />);
+    expect(queryByText(/Set entries/i)).toBeInTheDocument();
+  });
+
+  it("button calls the function with the correct arguments", () => {
+    const saveEntries = jest.fn();
+    const { getByText, getByLabelText } = render(
+      <Results saveEntries={saveEntries} />
+    );
+    const input = getByLabelText("New entries");
+    fireEvent.change(input, {
+      target: {
+        value: "Simpsonit, Futurama"
+      }
+    });
+    const button = getByText("Set entries");
+    fireEvent.click(button);
+    expect(saveEntries).toHaveBeenCalledTimes(1);
+    expect(saveEntries).toHaveBeenCalledWith(["Simpsonit", "Futurama"]);
+  });
 });

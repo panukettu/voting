@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { createStore } from "redux";
 import reducer from "./reducers/reducer";
+import { Provider } from "react-redux";
 
 const store = createStore(reducer);
 store.dispatch({
@@ -17,6 +18,11 @@ store.dispatch({
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<App store={store} />, div);
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    div
+  );
   ReactDOM.unmountComponentAtNode(div);
 });
