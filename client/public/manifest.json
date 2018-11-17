@@ -1,6 +1,6 @@
 {
-  "short_name": "voteplz",
-  "name": "voting-client",
+  "short_name": "vote plz",
+  "name": "a voting platform",
   "icons": [
     {
       "src": "favicon.ico",
