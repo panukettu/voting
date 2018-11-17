@@ -6,3 +6,7 @@ export const saveEntries = entries => ({
   entries,
   meta: { remote: true }
 });
+export const reset = () => ({
+  type: "RESET",
+  meta: { remote: true }
+});
