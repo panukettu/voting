@@ -4,12 +4,13 @@
   "description": "a voting app",
   "main": "index.js",
   "scripts": {
+    "start": "cd server && npm start",
     "concurrent": "concurrently --kill-others --raw \"npm run start-server\" \"npm run start-client\"",
     "start-server": "cd server && npm start",
     "start-client": "cd client && npm start",
     "test-server": "cd server && npm test",
     "test-client": "cd client && npm test",
-    "heroku-postbuild": "cd client && npm install; npm run build; cd ../server && npm install; npm start"
+    "heroku-postbuild": "cd client && npm install; npm run build; cd ../server && npm install;"
   },
   "repository": {
     "type": "git",
