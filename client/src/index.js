@@ -12,9 +12,7 @@ import io from "socket.io-client";
 import { setState } from "./actionCreators";
 import { loadState, saveState } from "./localStorage";
 
-const socket = io(
-  `${window.location.protocol}//${window.location.hostname}:5000`
-);
+const socket = io();
 
 const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
