@@ -7,6 +7,8 @@ do votes from an array of entries
 users will vote from the client  
 winner will be the last item in the array
 
+[demo app](http://vote.panukettunen.com)
+
 ## run it
 
 > yarn start-server  
