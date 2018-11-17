@@ -9,16 +9,11 @@ winner will be the last item in the array
 
 [demo app](http://vote.panukettunen.com)
 
-## run it
-
-> yarn start-server  
-> yarn start-client
-
-concurrently
+## dev
 
 > yarn concurrent
 
 ## test it
 
-> yarn test-server  
+> yarn test
 > yarn test-client
