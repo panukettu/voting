@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import { VotingContainer } from "./components/Voting";
 import { ResultsContainer } from "./components/Results";
 import { Router } from "@reach/router";

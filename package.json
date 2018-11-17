@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node index.js",
-    "concurrent": "concurrently --kill-others --raw \"npm run start\" \"npm run start-client\"",
+    "dev": "concurrently --kill-others --raw \"npm run start\" \"npm run start-client\"",
     "start-client": "cd client && npm start",
     "test": "jest --watch",
     "test-client": "cd client && npm test",
