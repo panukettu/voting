@@ -1,6 +1,6 @@
 {
-  "short_name": "cast your vote",
-  "name": "voting client",
+  "short_name": "voting",
+  "name": "voting-client",
   "icons": [
     {
       "src": "favicon.ico",
