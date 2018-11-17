@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import io from "socket.io-client";
 
 import { setState } from "./actionCreators";
+import { loadState, saveState } from "./localStorage";
 
 const socket = io(
   `${window.location.protocol}//${window.location.hostname}:8090`
@@ -17,9 +18,12 @@ const socket = io(
 
 const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
-)(createStore);
+)(store => createStore(store, loadState()));
 const store = createStoreWithMiddleware(reducer);
-
+store.subscribe(() => {
+  console.log("set state");
+  saveState(store.getState());
+});
 socket.on("state", state => store.dispatch(setState(state)));
 
 ReactDOM.render(
