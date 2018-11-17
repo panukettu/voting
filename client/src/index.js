@@ -13,7 +13,7 @@ import { setState } from "./actionCreators";
 import { loadState, saveState } from "./localStorage";
 
 const socket = io(
-  `${window.location.protocol}//${window.location.hostname}:8090`
+  `${window.location.protocol}//${window.location.hostname}:5000`
 );
 
 const createStoreWithMiddleware = applyMiddleware(
