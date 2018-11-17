@@ -9,7 +9,7 @@
     "start-client": "cd client && npm start",
     "test-server": "cd server && npm test",
     "test-client": "cd client && npm test",
-    "heroku-postbuild": "cd server && npm install; cd server && npm install"
+    "heroku-postbuild": "cd server && npm install; cd ../server && npm install"
   },
   "repository": {
     "type": "git",
