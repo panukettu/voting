@@ -30,13 +30,13 @@
     "babel-core": "7.0.0-bridge.0",
     "express": "^4.16.4",
     "redux": "^4.0.1",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "concurrently": "^4.0.1",
+    "regenerator-runtime": "^0.13.1"
   },
   "devDependencies": {
-    "babel-jest": "^23.6.0",
-    "concurrently": "^4.0.1",
     "jest": "^23.6.0",
-    "regenerator-runtime": "^0.13.1"
+    "babel-jest": "^23.6.0"
   },
   "jest": {
     "testPathIgnorePatterns": [
