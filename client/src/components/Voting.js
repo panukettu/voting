@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import * as actionCreators from "../actionCreators";
 import "./Voting.css";
 
-const mapStateToProps = ({ vote: { pair, tally }, winner, votedFor }) => ({
+const mapStateToProps = ({
+  vote: { pair = [], tally = {} },
+  winner,
+  votedFor
+}) => ({
   pair,
   tally,
   winner,
@@ -29,7 +33,7 @@ const Vote = ({ pair, tally = {}, votedFor, vote }) => {
 
   return (
     <div>
-      {pair.map((entry, index) => (
+      {pair.map(entry => (
         <div key={v4()} className="voting-item">
           {hasVotedFor(entry) && (
             <label htmlFor="results" style={{ color: "white" }}>

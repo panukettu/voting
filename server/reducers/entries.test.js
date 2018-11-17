@@ -1,13 +1,13 @@
 import entries from "./entries";
 
 describe("entries", () => {
-  it("it sets entries", () => {
+  it("it sets entries and marks vote as started", () => {
     const stateBefore = {};
     const action = {
       type: "SET_ENTRIES",
       entries: ["Inception", "Lord of the Rings"]
     };
-    const stateAfter = { entries: [...action.entries] };
+    const stateAfter = { entries: [...action.entries], voteStarted: true };
 
     expect(entries(stateBefore, action)).toEqual(stateAfter);
   });
@@ -85,6 +85,20 @@ describe("votes", () => {
         tally: { "Lord of the Rings": 3, Inception: 2 }
       }
     };
+
+    expect(entries(stateBefore, action)).toEqual(stateAfter);
+  });
+
+  it("resets", () => {
+    const stateBefore = {
+      vote: {
+        pair: ["Inception", "Lord of the Rings"],
+        tally: { "Lord of the Rings": 3, Inception: 1 }
+      }
+    };
+
+    const action = { type: "RESET" };
+    const stateAfter = { vote: { tally: {}, pair: [] } };
 
     expect(entries(stateBefore, action)).toEqual(stateAfter);
   });

@@ -2,9 +2,8 @@ const entries = (state = {}, action) => {
   switch (action.type) {
     case "SET_ENTRIES": {
       return {
-        entries: state.entries
-          ? [...state.entries, ...action.entries]
-          : [...action.entries]
+        entries: [...action.entries],
+        voteStarted: true
       };
     }
     case "NEXT": {
@@ -28,6 +27,9 @@ const entries = (state = {}, action) => {
     }
     case "VOTE": {
       return { ...state, vote: vote(state.vote, action) };
+    }
+    case "RESET": {
+      return { vote: { tally: {}, pair: [] } };
     }
     default:
       return state;

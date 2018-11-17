@@ -111,4 +111,23 @@ describe("client reducer", () => {
 
   //   expect(actions.reduce(reducer, {})).toEqual(stateAfter);
   // });
+
+  it("resets", () => {
+    const stateBefore = {
+      votedFor: "A",
+      entries: ["C", "D"],
+      vote: {
+        pair: ["A", "B"],
+        tally: { A: 1 }
+      }
+    };
+
+    const action = {
+      type: "RESET"
+    };
+
+    const stateAfter = { vote: { tally: {}, pair: [] } };
+    delete stateAfter.votedFor;
+    expect(reducer(stateBefore, action)).toEqual(stateAfter);
+  });
 });

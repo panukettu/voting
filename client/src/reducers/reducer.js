@@ -10,7 +10,14 @@ const reducer = (
 ) => {
   switch (action.type) {
     case "SET_STATE": {
-      if (state.entries && state.entries.length > 0 && state.winner) {
+      if (action.state.winner) {
+        return {
+          entries: undefined,
+          vote: { tally: {}, pair: [] },
+          winner: action.state.winner
+        };
+      }
+      if (state.winner) {
         delete state.winner;
       }
       const oldPair = get(state, "vote.pair");
@@ -31,6 +38,9 @@ const reducer = (
       const newState = { ...state };
       delete newState.votedFor;
       return newState;
+    }
+    case "RESET": {
+      return { vote: { tally: {}, pair: [] } };
     }
     default:
       return state;
