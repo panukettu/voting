@@ -14,7 +14,7 @@ winner will be the last item in the array
 
 concurrently
 
-> yarn start
+> yarn concurrent
 
 ## test it
 
