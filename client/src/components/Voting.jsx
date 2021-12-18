@@ -7,12 +7,12 @@ import "./Voting.css";
 const mapStateToProps = ({
   vote: { pair = [], tally = {} },
   winner,
-  votedFor
+  votedFor,
 }) => ({
   pair,
   tally,
   winner,
-  votedFor
+  votedFor,
 });
 
 export function Voting({ winner, ...props }) {
@@ -28,12 +28,12 @@ export function Voting({ winner, ...props }) {
 }
 
 const Vote = ({ pair, tally = {}, votedFor, vote }) => {
-  const hasVotedFor = entry => votedFor === entry;
+  const hasVotedFor = (entry) => votedFor === entry;
   const isDisabled = !!votedFor;
 
   return (
     <div>
-      {pair.map(entry => (
+      {pair.map((entry) => (
         <div key={v4()} className="voting-item">
           {hasVotedFor(entry) && (
             <label htmlFor="results" style={{ color: "white" }}>
@@ -54,7 +54,4 @@ const Vote = ({ pair, tally = {}, votedFor, vote }) => {
   );
 };
 
-export const VotingContainer = connect(
-  mapStateToProps,
-  actionCreators
-)(Voting);
+export const VotingContainer = connect(mapStateToProps, actionCreators)(Voting);

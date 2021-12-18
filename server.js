@@ -18,7 +18,7 @@ export default function startServer(store) {
     console.groupEnd();
   });
 
-  io.on("connection", socket => {
+  io.on("connection", (socket) => {
     socket.emit("state", store.getState());
     socket.on("action", store.dispatch.bind(store));
   });
@@ -27,7 +27,7 @@ export default function startServer(store) {
     // Serve any static files
     app.use(express.static(path.join(__dirname, "/client/build")));
     // Handle React routing, return all requests to React app
-    app.get("*", function(req, res) {
+    app.get("*", function (req, res) {
       res.sendFile(path.join(__dirname, "client/build", "index.html"));
     });
   }

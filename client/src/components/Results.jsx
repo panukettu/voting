@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../actionCreators";
 import "./Results.css";
+
 const mapStateToProps = ({
   vote: { tally, pair },
   winner,
   entries,
   voteStarted,
-  reset
+  reset,
 }) => ({
   tally,
   winner,
   currentEntries: entries,
   pair,
   voteStarted,
-  reset
+  reset,
 });
 
 export const Results = ({
@@ -25,10 +26,10 @@ export const Results = ({
   currentEntries,
   voteStarted,
   pair,
-  reset
+  reset,
 }) => {
   const [entries, setEntries] = useState("");
-  const handleSaveEntries = entries => {
+  const handleSaveEntries = (entries) => {
     const list = entries.replace(" ", "").split(",");
     saveEntries(list);
   };
@@ -38,7 +39,7 @@ export const Results = ({
         {voteStarted && <h2>Voting in progress</h2>}
         {pair && (
           <div className="results-pair">
-            {pair.map(item => (
+            {pair.map((item) => (
               <div className="results-pair_container" key={item}>
                 <h3>{item}</h3>
                 <span className="results-pair_result">{tally[item]}</span>
@@ -61,7 +62,7 @@ export const Results = ({
               <React.Fragment>
                 <h2>Next in voting</h2>
                 <div className="results-management_next-list">
-                  {currentEntries.map(entry => (
+                  {currentEntries.map((entry) => (
                     <div className="results-management_next-entry" key={entry}>
                       {entry}
                     </div>
@@ -89,7 +90,7 @@ export const Results = ({
           value={entries}
           type="text"
           placeholder="Pizza, Pasta.."
-          onChange={e => setEntries(e.target.value)}
+          onChange={(e) => setEntries(e.target.value)}
         />
         <button
           id="setEntries"
